@@ -41,15 +41,12 @@ def index():
 def years():
     """Result by year."""
     return render_template("years.html")
-<<<<<<< HEAD
 @app.route("/countries")
 def countries():
     return render_template("countries.html")
 @app.route("/maps")
 def maps():
     return render_template("maps.html")
-=======
->>>>>>> feff34e60c5fe3ea8a99ab6ab41e701aa629c048
 @app.route("/apis")
 def welcome():
     """List all available api routes."""
@@ -59,13 +56,9 @@ def welcome():
         f"/countries<br/>"
         f"/latlngs<br/>"
         f"/years_arrival<br/>"
-<<<<<<< HEAD
         f"/years_arrival_map<br/>"
         f"/years_gdp<br/>"
         f"/years_gdp_map<br/>"
-=======
-        f"/years_gdp<br/>"
->>>>>>> feff34e60c5fe3ea8a99ab6ab41e701aa629c048
     )
 @app.route("/latlngs")
 def latlngs():
@@ -87,14 +80,9 @@ def latlngs():
         country_latlngs.append(latlngs)
     return jsonify(country_latlngs)
 
-<<<<<<< HEAD
 @app.route("/country_list")
 def country_list():
 
-=======
-@app.route("/countries")
-def countries():
->>>>>>> feff34e60c5fe3ea8a99ab6ab41e701aa629c048
     # Query all arrivals info
     session = Session(engine)
     arrive = session.query(arrivals).all()
@@ -246,7 +234,6 @@ def years_gdp_map():
     session = Session(engine)
     arrival_results = session.query(gdp).all()
 
-<<<<<<< HEAD
     # close the session to end the communication with the database
     session.close()
 
@@ -273,50 +260,6 @@ def years_gdp():
     session.close()
 
 
-=======
-    all_arrival_stuff = []
-    yr_arrivals = {}
-    for year in range(1995,2018):
-        yr_arrivals[str(year)] = {}
-
-    for country in arrival_results:
-        yr_arrivals["1995"][str(country.CountryName)] = country.y1995
-        yr_arrivals["1996"][str(country.CountryName)] = country.y1996
-        yr_arrivals["1997"][str(country.CountryName)] = country.y1997
-        yr_arrivals["1998"][str(country.CountryName)] = country.y1998
-        yr_arrivals["1999"][str(country.CountryName)] = country.y1999
-        yr_arrivals["2000"][str(country.CountryName)] = country.y2000
-        yr_arrivals["2001"][str(country.CountryName)] = country.y2001
-        yr_arrivals["2002"][str(country.CountryName)] = country.y2002
-        yr_arrivals["2003"][str(country.CountryName)] = country.y2003
-        yr_arrivals["2004"][str(country.CountryName)] = country.y2004
-        yr_arrivals["2005"][str(country.CountryName)] = country.y2005
-        yr_arrivals["2006"][str(country.CountryName)] = country.y2006
-        yr_arrivals["2007"][str(country.CountryName)] = country.y2007
-        yr_arrivals["2008"][str(country.CountryName)] = country.y2008
-        yr_arrivals["2009"][str(country.CountryName)] = country.y2009
-        yr_arrivals["2010"][str(country.CountryName)] = country.y2010
-        yr_arrivals["2011"][str(country.CountryName)] = country.y2011
-        yr_arrivals["2012"][str(country.CountryName)] = country.y2012
-        yr_arrivals["2013"][str(country.CountryName)] = country.y2013
-        yr_arrivals["2014"][str(country.CountryName)] = country.y2014
-        yr_arrivals["2015"][str(country.CountryName)] = country.y2015
-        yr_arrivals["2016"][str(country.CountryName)] = country.y2016
-        yr_arrivals["2017"][str(country.CountryName)] = country.y2017
-        
-    all_arrival_stuff.append(yr_arrivals)
-    return jsonify(all_arrival_stuff)
-
-@app.route("/years_gdp")
-def years_gdp():
-# Query all passengers
-    session = Session(engine)
-    gdp_results = session.query(gdp).all()
-
-    # close the session to end the communication with the database
-    session.close()
-
->>>>>>> feff34e60c5fe3ea8a99ab6ab41e701aa629c048
     all_gdp_stuff = []
     yr_gdp = {}
     for year in range(1995,2018):
